@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     argocd.argoproj.io/tracking-id: observability-root:networking.k8s.io/Ingress:observability/jaeger
+    cert-manager.io/cluster-issuer: "letsencrypt"
   name: jaeger
   namespace: observability
 spec:
