@@ -4,11 +4,10 @@ metadata:
   name: jaeger
   namespace: argocd
 spec:
-  project: observability
   source:
     repoURL: https://jaegertracing.github.io/helm-charts
     chart: jaeger
-    targetRevision: "*"
+    targetRevision: 0.71.0
     helm:
       parameters:
         - name: storage.type

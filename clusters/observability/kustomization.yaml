@@ -1,0 +1,6 @@
+resources:
+  - apps/prometheus.yaml
+  - apps/loki.yaml
+  - apps/jaeger.yaml
+  - apps/grafana-ingress.yaml
+  - apps/alerts.yaml
