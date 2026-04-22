@@ -3,6 +3,7 @@ kind: Application
 metadata:
   annotations:
     argocd.argoproj.io/tracking-id: observability-root:argoproj.io/Application:argocd/alerts
+    argocd.argoproj.io/sync-wave: "1"
   name: alerts
   namespace: argocd
 spec:
