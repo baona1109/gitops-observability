@@ -9,4 +9,3 @@ resources:
   - apps/ingress/jaeger-ingress.yaml
   - apps/ingress/argocd-ingress.yaml
 
-  - apps/alerts/alerts.yaml
