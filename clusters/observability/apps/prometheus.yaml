@@ -16,7 +16,9 @@ spec:
     helm:
       values: |
         grafana:
-          adminPassword: admin
+          existingSecret: grafana-admin-secret
+          userKey: admin    
+          passwordKey: admin-password
 
         prometheus:
           prometheusSpec:

@@ -8,5 +8,9 @@ spec:
     - name: basic
       rules:
         - alert: NodeDown
-          expr: up == 0
+          expr: up{job="node-exporter"} == 0
           for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Node {{ $labels.instance }} is down"

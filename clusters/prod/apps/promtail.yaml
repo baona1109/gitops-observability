@@ -6,4 +6,4 @@ metadata:
 data:
   promtail.yaml: |
     clients:
-      - url: http://loki.monitoring.svc:3100/loki/api/v1/push
+      - url: http://loki.sudocrew.io.vn/loki/api/v1/push
