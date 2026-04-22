@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: promtail
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: observability
+    server: https://kubernetes.default.svc
+  source:
+    chart: promtail
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 6.15.3
+    helm:
+      values: |
+        config:
+          clients:
+            - url: http://loki.sudocrew.io.vn/loki/api/v1/push
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

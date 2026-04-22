@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: clusters/.*secret.*\.yaml$
+    age: age1yr02hy2pws3amhzjgf5tn2yfc3w2ec5afj8lafe5s8uvcnvdwalqx3w64t
+    encrypted_regex: "^(data|stringData)$"

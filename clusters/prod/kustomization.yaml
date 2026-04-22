@@ -1,5 +1,6 @@
 resources:
   - apps/exporters.yaml
   - apps/promtail.yaml
+  - apps/promtail-app.yaml
 
   - apps/ingress/argocd-ingress.yaml
