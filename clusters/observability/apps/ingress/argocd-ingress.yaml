@@ -25,5 +25,5 @@ spec:
   tls:
     - hosts:
         - argocd-obs.sudocrew.io.vn
-      secretName: wildcard-tls
+      secretName: wildcard-cert
 
