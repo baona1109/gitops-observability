@@ -9,3 +9,4 @@ resources:
   - apps/ingress/jaeger-ingress.yaml
   - apps/ingress/argocd-ingress.yaml
 
+  - apps/alerts/prometheus-rule.yaml
