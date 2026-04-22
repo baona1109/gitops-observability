@@ -19,7 +19,7 @@ spec:
             retention: 7d
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: observability
   syncPolicy:
     automated:
       prune: true

@@ -1,18 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: grafana
-  namespace: monitoring
+  name: jaeger
+  namespace: observability
 spec:
   ingressClassName: nginx
   rules:
-    - host: grafana.sudocrew.io.vn
+    - host: jaeger.sudocrew.io.vn
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: monitoring-grafana
+                name: jaeger-query
                 port:
-                  number: 80
+                  number: 16686
+  spec:
+  tls:
+    - hosts:
+        - jaeger.sudocrew.io.vn
+      secretName: jaeger-tls
