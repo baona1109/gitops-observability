@@ -15,7 +15,7 @@ spec:
         paths:
           - backend:
               service:
-                name: monitoring-grafana
+                name: prometheus-grafana
                 port:
                   number: 80
             path: /
