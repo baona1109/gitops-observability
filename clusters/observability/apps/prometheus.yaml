@@ -1,14 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: observability-root:argoproj.io/Application:argocd/prometheus
   name: prometheus
   namespace: argocd
 spec:
+  destination:
+    namespace: observability
+    server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://prometheus-community.github.io/helm-charts
     chart: kube-prometheus-stack
-    targetRevision: 58.0.0
     helm:
       values: |
         grafana:
@@ -17,10 +20,10 @@ spec:
         prometheus:
           prometheusSpec:
             retention: 7d
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: observability
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 58.0.0
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+

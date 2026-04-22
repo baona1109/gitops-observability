@@ -1,21 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: observability-root:argoproj.io/Application:argocd/jaeger
   name: jaeger
   namespace: argocd
 spec:
+  destination:
+    namespace: observability
+    server: https://kubernetes.default.svc
   source:
-    repoURL: https://jaegertracing.github.io/helm-charts
     chart: jaeger
-    targetRevision: 0.71.0
     helm:
       parameters:
         - name: storage.type
           value: memory
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: observability
+    repoURL: https://jaegertracing.github.io/helm-charts
+    targetRevision: 0.71.0
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+

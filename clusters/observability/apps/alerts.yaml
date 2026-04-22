@@ -1,6 +1,9 @@
 apiVersion: observability.coreos.com/v1
 kind: PrometheusRule
 metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: >-
+      observability-root:observability.coreos.com/PrometheusRule:observability/alerts
   name: alerts
   namespace: observability
 spec:
@@ -10,3 +13,4 @@ spec:
         - alert: NodeDown
           expr: up == 0
           for: 2m
+

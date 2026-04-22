@@ -1,6 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: observability-root:networking.k8s.io/Ingress:observability/prometheus
   name: prometheus
   namespace: observability
 spec:
@@ -9,14 +11,15 @@ spec:
     - host: prometheus.sudocrew.io.vn
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
+          - backend:
               service:
                 name: monitoring-kube-prometheus-prometheus
                 port:
                   number: 9090
+            path: /
+            pathType: Prefix
   tls:
     - hosts:
         - prometheus.sudocrew.io.vn
       secretName: prometheus-tls
+

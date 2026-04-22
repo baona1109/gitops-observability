@@ -1,24 +1,26 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: observability-root:networking.k8s.io/Ingress:observability/grafana
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 128k
   name: grafana
   namespace: observability
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
 spec:
   ingressClassName: nginx
   rules:
     - host: grafana.sudocrew.io.vn
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
+          - backend:
               service:
                 name: monitoring-grafana
                 port:
                   number: 80
+            path: /
+            pathType: Prefix
   tls:
     - hosts:
         - grafana.sudocrew.io.vn
       secretName: grafana-tls
+
