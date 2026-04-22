@@ -1,21 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  annotations:
-    argocd.argoproj.io/tracking-id: observability-root:argoproj.io/Application:argocd/loki
-  name: loki
+  name: observability-root
   namespace: argocd
 spec:
-  destination:
-    namespace: observability
-    server: https://kubernetes.default.svc
   project: default
   source:
-    chart: loki-stack
-    repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 2.10.2
+    repoURL: https://github.com/baona1109/gitops-observability
+    targetRevision: main
+    path: clusters/observability
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-
