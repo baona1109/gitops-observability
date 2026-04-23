@@ -3,7 +3,7 @@ resources:
   - apps/loki.yaml
   - apps/jaeger.yaml
   - apps/alerts-app.yaml
-  - apps/grafana-secret.yaml
+  - apps/argocd-config.yaml
 
   - apps/ingress/grafana-ingress.yaml
   - apps/ingress/prometheus-ingress.yaml
