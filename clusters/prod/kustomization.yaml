@@ -3,6 +3,5 @@ resources:
   - apps/promtail-app.yaml
   - apps/argocd-config.yaml
   - apps/prometheus-agent.yaml
-  - apps/arp-fix.yaml
 
   - apps/ingress/argocd-ingress.yaml
