@@ -17,8 +17,7 @@ spec:
       skipCrds: false
       values: |
         grafana:
-          admin:
-            adminPassword: admin
+          adminPassword: admin
         prometheus:
           prometheusSpec:
             retention: 7d

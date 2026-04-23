@@ -13,6 +13,21 @@ spec:
   source:
     chart: jaeger
     helm:
+      values: |
+        storage:
+          type: none
+        allInOne:
+          enabled: true
+        collector:
+          enabled: false
+        query:
+          enabled: false
+        agent:
+          enabled: false
+        cassandra:
+          enabled: false
+        provisionDataStore:
+          cassandra: false
       parameters:
         - name: storage.type
           value: memory
