@@ -27,7 +27,16 @@ spec:
           enabled: false
         alertmanager:
           enabled: false
+        prometheusOperator:
+          enabled: true    # ← keep operator to install CRDs
+        kubeStateMetrics:
+          enabled: false
+        nodeExporter:
+          enabled: false   # ← already have your own node-exporter
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true    # ← fixes the annotation size error
