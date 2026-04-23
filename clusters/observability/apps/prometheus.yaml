@@ -18,6 +18,21 @@ spec:
       values: |
         grafana:
           adminPassword: admin
+          sidecar:
+            resources:
+              requests:
+                cpu: 10m
+                memory: 50Mi
+              limits:
+                cpu: 100m
+                memory: 100Mi
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
         prometheus:
           prometheusSpec:
             retention: 7d
