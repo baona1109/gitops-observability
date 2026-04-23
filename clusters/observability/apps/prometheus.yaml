@@ -14,6 +14,7 @@ spec:
   source:
     chart: kube-prometheus-stack
     helm:
+      skipCrds: false
       values: |
         grafana:
           admin:
@@ -27,4 +28,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
