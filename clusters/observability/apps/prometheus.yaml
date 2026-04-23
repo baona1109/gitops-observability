@@ -16,7 +16,8 @@ spec:
     helm:
       values: |
         grafana:
-          adminPassword: admin
+          admin:
+            adminPassword: admin
         prometheus:
           prometheusSpec:
             retention: 7d
