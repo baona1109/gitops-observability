@@ -6,6 +6,12 @@ metadata:
   name: loki
   namespace: argocd
 spec:
+  ignoreDifferences:
+    - group: ""
+      kind: ConfigMap
+      name: loki-loki-stack
+      jsonPointers:
+        - /data
   destination:
     namespace: observability
     server: https://kubernetes.default.svc
