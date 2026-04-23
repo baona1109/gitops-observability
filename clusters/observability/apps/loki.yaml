@@ -14,6 +14,14 @@ spec:
     chart: loki-stack
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: 2.10.2
+    helm:
+      values: |
+        grafana:
+          enabled: false
+        prometheus:
+          enabled: false
+        loki:
+          isDefault: false
   syncPolicy:
     automated:
       prune: true
