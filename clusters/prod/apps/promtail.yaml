@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: promtail
-  namespace: observability
-data:
-  promtail.yaml: |
-    clients:
-      - url: http://loki.sudocrew.io.vn/loki/api/v1/push
