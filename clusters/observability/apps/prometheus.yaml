@@ -27,6 +27,8 @@ spec:
               isDefault: false
               editable: true
           sidecar:
+            datasources:
+              enabled: true
             resources:
               requests:
                 cpu: 10m
