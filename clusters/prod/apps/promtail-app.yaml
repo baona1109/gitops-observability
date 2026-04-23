@@ -17,6 +17,10 @@ spec:
         config:
           clients:
             - url: http://loki.sudocrew.io.vn/loki/api/v1/push
+          snippets:
+            extraRelabelConfigs:
+              - target_label: cluster
+                replacement: prod
   syncPolicy:
     automated:
       prune: true
