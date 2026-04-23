@@ -22,7 +22,10 @@ spec:
             - name: Loki
               type: loki
               url: http://loki.observability.svc:3100
+              access: proxy
+              version: 1
               isDefault: false
+              editable: true
           sidecar:
             resources:
               requests:

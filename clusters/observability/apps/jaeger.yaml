@@ -15,7 +15,7 @@ spec:
     helm:
       values: |
         storage:
-          type: none
+          type: memory
         allInOne:
           enabled: true
         collector:
@@ -28,9 +28,6 @@ spec:
           enabled: false
         provisionDataStore:
           cassandra: false
-      parameters:
-        - name: storage.type
-          value: memory
     repoURL: https://jaegertracing.github.io/helm-charts
     targetRevision: 0.71.0
   syncPolicy:
