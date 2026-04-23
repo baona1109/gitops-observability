@@ -22,6 +22,9 @@ spec:
           enabled: false
         loki:
           isDefault: false
+          sidecar:
+            datasources:
+              enabled: false
   syncPolicy:
     automated:
       prune: true
