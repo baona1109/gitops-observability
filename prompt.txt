@@ -1,4 +1,8 @@
-- The application Loki on argocd-obs failed with following error:
-Failed to load target state: failed to generate manifest for source 1 of 1: rpc error: code = Unknown desc = Manifest generation error (cached): failed to execute helm template command: failed to get command args to log: `helm template . --name-template loki --namespace observability --kube-version 1.35.4 --values /tmp/0b349c36-061b-4d5a-89ee-015dcbe046ba <api versions removed> --include-crds` failed exit status 1: Error: execution error at (loki/templates/validate.yaml:40:4): You must provide a schema_config for Loki, one is not provided as this will be individual for every Loki cluster. See https://grafana.com/docs/loki/latest/operations/storage/schema/ for schema information. For quick testing (with no persistence) add `--set loki.useTestSchema=true` Use --debug flag to render out invalid YAML
+- The loki-0 is pending with following issue:
+Events:
+  Type     Reason            Age               From               Message
+  ----     ------            ----              ----               -------
+  Warning  FailedScheduling  3m (x4 over 13m)  default-scheduler  0/3 nodes are available: pod has unbound immediate PersistentVolumeClaims. not found
 
-- I found that the pod of Loki doesn't exist on OBS cluster as well
+Seems like I don't have a StorageClass provision setup yet.
+Would you recommend if I should use PVC or Minio solution?
