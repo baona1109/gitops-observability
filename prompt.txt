@@ -1,8 +1,3 @@
-- The loki-0 is pending with following issue:
-Events:
-  Type     Reason            Age               From               Message
-  ----     ------            ----              ----               -------
-  Warning  FailedScheduling  3m (x4 over 13m)  default-scheduler  0/3 nodes are available: pod has unbound immediate PersistentVolumeClaims. not found
-
-Seems like I don't have a StorageClass provision setup yet.
-Would you recommend if I should use PVC or Minio solution?
+At the moment, grafana only shows resources collected from OBS cluster, for example: memory, cpu, network...
+My main purpose of this lab is to monitor resources on PROD cluster from OBS cluster.
+Please check if we missed or failed at some point.
