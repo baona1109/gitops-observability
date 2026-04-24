@@ -4,9 +4,5 @@ resources:
   - apps/jaeger.yaml
   - apps/alerts-app.yaml
   - apps/argocd-config.yaml
-
-  - apps/ingress/grafana-ingress.yaml
-  - apps/ingress/prometheus-ingress.yaml
-  - apps/ingress/jaeger-ingress.yaml
-  - apps/ingress/argocd-ingress.yaml
-  - apps/ingress/loki-ingress.yaml
+  - apps/argocd-nodeport.yaml
+  - apps/loki-nodeport.yaml

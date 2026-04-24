@@ -17,9 +17,7 @@ spec:
         prometheus:
           prometheusSpec:
             remoteWrite:
-              - url: https://prometheus.sudocrew.io.vn/api/v1/write
-                tlsConfig:
-                  insecureSkipVerify: true
+              - url: http://prometheus.sudocrew.io.vn:30090/api/v1/write
                 writeRelabelConfigs:
                   - targetLabel: cluster
                     replacement: prod

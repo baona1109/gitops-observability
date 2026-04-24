@@ -43,7 +43,13 @@ spec:
             limits:
               cpu: 200m
               memory: 256Mi
+          service:
+            type: NodePort
+            nodePort: 30300
         prometheus:
+          service:
+            type: NodePort
+            nodePort: 30090
           prometheusSpec:
             retention: 7d
             enableFeatures:

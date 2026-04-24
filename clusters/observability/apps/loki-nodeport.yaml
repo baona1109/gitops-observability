@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loki-nodeport
+  namespace: observability
+spec:
+  type: NodePort
+  ports:
+    - name: http-metrics
+      port: 3100
+      targetPort: 3100
+      nodePort: 30310
+  selector:
+    app.kubernetes.io/name: loki
+    app.kubernetes.io/component: single-binary
