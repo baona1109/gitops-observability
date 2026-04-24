@@ -1,5 +1,6 @@
-Take a preview on my github project. Analyze it and learn it deeply.
-Context: I have 2 lab kubernetes clusters deployed with kube-spray: Production (PROD) and Observability (OBS)
+### CONTEXT: 
+
+I have 2 lab kubernetes clusters deployed with kube-spray: Production (PROD) and Observability (OBS)
 
 * PROD: 
 master01: 192.168.1.211 
@@ -10,9 +11,9 @@ worker02: 192.168.1.202
 worker03: 192.168.1.203
 
 Deployed:
-_ rancher
-_ argocd
-_ observability stack (by this repo)
+_ rancher (rancher.sudocrew.io.vn)
+_ argocd (argocd.sudocrew.io.vn)
+_ observability stack (deployed by this repo)
 _ ingress-nginx
 
 # cat ip-pool.yaml
@@ -40,8 +41,8 @@ obs-master01: 192.168.1.191
 obs-worker01: 192.168.1.181 
 obs-worker02: 192.168.1.182
 Deployed:
-_ argocd
-_ observability stack (by this repo)
+_ argocd (argocd-obs.sudocrew.io.vn)
+_ observability stack (deployed by this repo)
 _ ingress-nginx
 
 # cat ip-pool.yaml
@@ -64,10 +65,12 @@ spec:
   ipAddressPools:
   - default-pool
 
-Now, visualise the clusters and the observability stack.
-Then, convert my project to use NodePort, remove the Ingress solution, which ensures that I can access these site from a Windows VM in the same network:
-_ argocd of both clusters
-_ grafana
-_ rancher
-_ prometheus (optional)
-After that, describe step-by-step what I have to do to apply new setup.
+### REQUIREMENTS:
+- Take a preview on this project. Analyze it and learn it deeply.
+- Visualise the architecture of the clusters and the observability stack, export to jpeg file.
+- Restructure, convert my cluster and project to use NodePort, remove the Ingress solution, and ensure that I can access these sites from a Windows VM in the same network:
+  * argocd of both clusters
+  * grafana
+  * rancher
+  * prometheus (optional)
+- Describe step-by-step what I have to do to apply new setup.

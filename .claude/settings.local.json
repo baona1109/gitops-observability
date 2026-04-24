@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv run *)",
+      "Bash(python render_excalidraw.py \"C:/Users/bao/Desktop/gitops-observability/architecture.excalidraw\")",
+      "Bash(py render_excalidraw.py \"C:/Users/bao/Desktop/gitops-observability/architecture.excalidraw\")",
+      "Bash(pip install *)",
+      "Bash(python -m playwright install chromium)",
+      "Bash(curl *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "code-review-graph"
+  ]
+}
