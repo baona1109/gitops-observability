@@ -66,11 +66,11 @@ spec:
   - default-pool
 
 ### REQUIREMENTS:
-- Take a preview on this project. Analyze it and learn it deeply.
-- Visualise the architecture of the clusters and the observability stack, export to jpeg file.
-- Restructure, convert my cluster and project to use NodePort, remove the Ingress solution, and ensure that I can access these sites from a Windows VM in the same network:
-  * argocd of both clusters
-  * grafana
-  * rancher
-  * prometheus (optional)
-- Describe step-by-step what I have to do to apply new setup.
+
+- I have an nginx reverse proxy installed with a wildcard ssl to use HTTPS now. All domain now point to IP 192.168.1.200.
+  * Edit my project to use https URL without port. For example: Loki...
+  * Keep NodePort configuration the same.
+
+- Redraw the architecture in architecture.excalidraw following this constructions:
+  * Show nodes and IP of each nodes
+  * Tech stack of each node and how they relate to each other
