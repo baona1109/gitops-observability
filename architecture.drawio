@@ -1,0 +1,243 @@
+<mxfile host="app.diagrams.net" version="24.7.5">
+  <diagram id="architecture" name="Architecture">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- GitHub -->
+        <mxCell id="github_rect"
+          value="GitHub&lt;br&gt;gitops-observability"
+          style="rounded=1;arcSize=8;fillColor=#ddd6fe;strokeColor=#6d28d9;strokeWidth=2;fontFamily=Courier New;fontSize=14;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="810" y="30" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- PROD Cluster border -->
+        <mxCell id="prod_border"
+          value=""
+          style="rounded=1;arcSize=3;fillColor=none;strokeColor=#dc2626;strokeWidth=2;dashed=1;dashPattern=8 8;fontSize=0;"
+          vertex="1" parent="1">
+          <mxGeometry x="20" y="160" width="850" height="490" as="geometry" />
+        </mxCell>
+
+        <!-- PROD title -->
+        <mxCell id="prod_title"
+          value="PROD Cluster"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=18;fontColor=#dc2626;fontStyle=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="35" y="168" width="200" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- PROD Masters label -->
+        <mxCell id="prod_masters_label"
+          value="Masters"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=13;fontColor=#64748b;"
+          vertex="1" parent="1">
+          <mxGeometry x="35" y="200" width="120" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- master01 -->
+        <mxCell id="master01_rect"
+          value="master01&lt;br&gt;192.168.1.211&lt;br&gt;kube-apiserver · etcd&lt;br&gt;ArgoCD"
+          style="rounded=1;arcSize=8;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="218" width="240" height="105" as="geometry" />
+        </mxCell>
+
+        <!-- master02 -->
+        <mxCell id="master02_rect"
+          value="master02&lt;br&gt;192.168.1.212&lt;br&gt;kube-apiserver · etcd&lt;br&gt;ArgoCD"
+          style="rounded=1;arcSize=8;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="300" y="218" width="240" height="105" as="geometry" />
+        </mxCell>
+
+        <!-- master03 -->
+        <mxCell id="master03_rect"
+          value="master03&lt;br&gt;192.168.1.213&lt;br&gt;kube-apiserver · etcd&lt;br&gt;ArgoCD"
+          style="rounded=1;arcSize=8;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="560" y="218" width="240" height="105" as="geometry" />
+        </mxCell>
+
+        <!-- PROD Workers label -->
+        <mxCell id="prod_workers_label"
+          value="Workers"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=13;fontColor=#64748b;"
+          vertex="1" parent="1">
+          <mxGeometry x="35" y="345" width="120" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- worker01 -->
+        <mxCell id="worker01_rect"
+          value="worker01&lt;br&gt;192.168.1.201&lt;br&gt;node-exporter&lt;br&gt;prometheus-agent&lt;br&gt;promtail"
+          style="rounded=1;arcSize=8;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="365" width="240" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- worker02 -->
+        <mxCell id="worker02_rect"
+          value="worker02&lt;br&gt;192.168.1.202&lt;br&gt;node-exporter&lt;br&gt;prometheus-agent&lt;br&gt;promtail"
+          style="rounded=1;arcSize=8;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="300" y="365" width="240" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- worker03 -->
+        <mxCell id="worker03_rect"
+          value="worker03&lt;br&gt;192.168.1.203&lt;br&gt;node-exporter&lt;br&gt;prometheus-agent&lt;br&gt;promtail"
+          style="rounded=1;arcSize=8;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="560" y="365" width="240" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- PROD MetalLB label -->
+        <mxCell id="prod_metallb"
+          value="MetalLB pool: 192.168.1.231&#x2013;250"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=12;fontColor=#64748b;"
+          vertex="1" parent="1">
+          <mxGeometry x="35" y="522" width="320" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- OBS Cluster border -->
+        <mxCell id="obs_border"
+          value=""
+          style="rounded=1;arcSize=3;fillColor=none;strokeColor=#1e40af;strokeWidth=2;dashed=1;dashPattern=8 8;fontSize=0;"
+          vertex="1" parent="1">
+          <mxGeometry x="900" y="160" width="890" height="490" as="geometry" />
+        </mxCell>
+
+        <!-- OBS title -->
+        <mxCell id="obs_title"
+          value="OBS Cluster"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=18;fontColor=#1e40af;fontStyle=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="915" y="168" width="200" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- OBS Master label -->
+        <mxCell id="obs_masters_label"
+          value="Master"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=13;fontColor=#64748b;"
+          vertex="1" parent="1">
+          <mxGeometry x="915" y="200" width="120" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- obs-master01 -->
+        <mxCell id="obs_master01_rect"
+          value="obs-master01&lt;br&gt;192.168.1.191&lt;br&gt;kube-apiserver · etcd&lt;br&gt;ArgoCD"
+          style="rounded=1;arcSize=8;fillColor=#dbeafe;strokeColor=#1e40af;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="1205" y="218" width="280" height="105" as="geometry" />
+        </mxCell>
+
+        <!-- OBS Workers label -->
+        <mxCell id="obs_workers_label"
+          value="Workers"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=13;fontColor=#64748b;"
+          vertex="1" parent="1">
+          <mxGeometry x="915" y="345" width="120" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- obs-worker01 -->
+        <mxCell id="obs_worker01_rect"
+          value="obs-worker01&lt;br&gt;192.168.1.181&lt;br&gt;Prometheus :30090 | Grafana :30300"
+          style="rounded=1;arcSize=8;fillColor=#dbeafe;strokeColor=#1e40af;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="915" y="365" width="420" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- obs-worker02 -->
+        <mxCell id="obs_worker02_rect"
+          value="obs-worker02&lt;br&gt;192.168.1.182&lt;br&gt;Loki :30310 | Jaeger :16686"
+          style="rounded=1;arcSize=8;fillColor=#dbeafe;strokeColor=#1e40af;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="1355" y="365" width="425" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- OBS MetalLB label -->
+        <mxCell id="obs_metallb"
+          value="MetalLB pool: 192.168.1.161&#x2013;180"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontFamily=Courier New;fontSize=12;fontColor=#64748b;"
+          vertex="1" parent="1">
+          <mxGeometry x="915" y="614" width="320" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- nginx reverse proxy -->
+        <mxCell id="nginx_rect"
+          value="nginx reverse proxy&lt;br&gt;192.168.1.200&lt;br&gt;Wildcard SSL *.sudocrew.io.vn&lt;br&gt;HTTPS &#x2192; NodePort"
+          style="rounded=1;arcSize=8;fillColor=#a7f3d0;strokeColor=#047857;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="660" y="700" width="480" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Client / Browser -->
+        <mxCell id="client_rect"
+          value="Client / Browser&lt;br&gt;HTTPS (port 443)"
+          style="rounded=1;arcSize=8;fillColor=#fef3c7;strokeColor=#b45309;strokeWidth=2;fontFamily=Courier New;fontSize=13;fontColor=#374151;align=center;verticalAlign=middle;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="80" y="700" width="240" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: GitHub → PROD master02 (GitOps sync) -->
+        <mxCell id="arrow_gitops_prod"
+          value="GitOps sync"
+          style="edgeStyle=none;curved=0;strokeColor=#64748b;strokeWidth=2;fontFamily=Courier New;fontSize=12;fontColor=#64748b;html=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;"
+          edge="1" source="github_rect" target="master02_rect" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: GitHub → OBS master01 (GitOps sync) -->
+        <mxCell id="arrow_gitops_obs"
+          value="GitOps sync"
+          style="edgeStyle=none;curved=0;strokeColor=#64748b;strokeWidth=2;fontFamily=Courier New;fontSize=12;fontColor=#64748b;html=1;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;"
+          edge="1" source="github_rect" target="obs_master01_rect" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: worker01 → nginx (metrics remote-write, orange) -->
+        <mxCell id="arrow_metrics"
+          value="metrics (https remote-write)"
+          style="edgeStyle=none;curved=0;strokeColor=#c2410c;strokeWidth=2;fontFamily=Courier New;fontSize=12;fontColor=#c2410c;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.1;entryY=0;entryDx=0;entryDy=0;"
+          edge="1" source="worker01_rect" target="nginx_rect" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: worker03 → nginx (logs push, purple) -->
+        <mxCell id="arrow_logs"
+          value="logs (https push)"
+          style="edgeStyle=none;curved=0;strokeColor=#6d28d9;strokeWidth=2;fontFamily=Courier New;fontSize=12;fontColor=#6d28d9;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;"
+          edge="1" source="worker03_rect" target="nginx_rect" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: nginx → obs-worker01 (proxy to NodePorts, green) -->
+        <mxCell id="arrow_nginx_obs"
+          value="proxy to NodePorts"
+          style="edgeStyle=none;curved=0;strokeColor=#047857;strokeWidth=2;fontFamily=Courier New;fontSize=12;fontColor=#047857;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;"
+          edge="1" source="nginx_rect" target="obs_worker01_rect" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Client → nginx (HTTPS, green) -->
+        <mxCell id="arrow_client_nginx"
+          value="HTTPS"
+          style="edgeStyle=none;curved=0;strokeColor=#047857;strokeWidth=2;fontFamily=Courier New;fontSize=12;fontColor=#047857;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;"
+          edge="1" source="client_rect" target="nginx_rect" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: obs-worker01 → obs-worker02 (Grafana reads, dashed) -->
+        <mxCell id="arrow_internal"
+          value="Grafana reads&lt;br&gt;Prometheus + Loki"
+          style="edgeStyle=none;curved=0;strokeColor=#64748b;strokeWidth=1;dashed=1;fontFamily=Courier New;fontSize=11;fontColor=#64748b;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;"
+          edge="1" source="obs_worker01_rect" target="obs_worker02_rect" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
