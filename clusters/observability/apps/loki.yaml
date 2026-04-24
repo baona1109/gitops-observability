@@ -36,6 +36,9 @@ spec:
             type: filesystem
         singleBinary:
           replicas: 1
+          persistence:
+            storageClass: local-path
+            size: 10Gi
         read:
           replicas: 0
         write:
