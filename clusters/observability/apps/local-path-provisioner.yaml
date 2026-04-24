@@ -10,12 +10,10 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/rancher/local-path-provisioner.git
-    path: deploy/chart
-    targetRevision: v0.0.30
-    helm:
-      values: |
-        storageClass:
-          defaultClass: true
+    path: deploy
+    targetRevision: v0.0.28
+    directory:
+      include: "local-path-storage.yaml"
   syncPolicy:
     automated:
       prune: true
