@@ -1,3 +1,31 @@
+### Context: 
+
+I have 2 lab kubernetes clusters deployed with kube-spray: Production (PROD) and Observability (OBS)
+
+* PROD: 
+master01: 192.168.1.211 
+master02: 192.168.1.212 
+master03: 192.168.1.213 
+worker01: 192.168.1.201 
+worker02: 192.168.1.202 
+worker03: 192.168.1.203
+
+Deployed:
+_ rancher
+_ argocd
+_ observability stack (by this repo)
+_ services exposed via NodePort
+
+*OBS: 
+obs-master01: 192.168.1.191 
+obs-worker01: 192.168.1.181 
+obs-worker02: 192.168.1.182
+
+Deployed:
+_ argocd
+_ observability stack (by this repo)
+_ services exposed via NodePort
+
 At the moment, grafana only shows resources collected from OBS cluster, for example: memory, cpu, network...
 My main purpose of this lab is to monitor resources on PROD cluster from OBS cluster.
 Please check if we missed or failed at some point.

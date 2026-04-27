@@ -12,7 +12,8 @@
       "Bash(git push *)",
       "Bash(python render_excalidraw.py \"C:\\\\Users\\\\bao\\\\Desktop\\\\gitops-observability\\\\architecture.excalidraw\")",
       "Bash(python -c \"from playwright.sync_api import sync_playwright; print\\('playwright ok'\\)\")",
-      "Bash(python -c \"from playwright.sync_api import sync_playwright; p = sync_playwright\\(\\).start\\(\\); b = p.chromium.launch\\(\\); print\\('chromium ok'\\); b.close\\(\\); p.stop\\(\\)\")"
+      "Bash(python -c \"from playwright.sync_api import sync_playwright; p = sync_playwright\\(\\).start\\(\\); b = p.chromium.launch\\(\\); print\\('chromium ok'\\); b.close\\(\\); p.stop\\(\\)\")",
+      "Bash(rtk git *)"
     ]
   },
   "enableAllProjectMcpServers": true,
