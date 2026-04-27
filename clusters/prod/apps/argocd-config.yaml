@@ -7,15 +7,3 @@ data:
   server.insecure: "true"
   reposerver.exec.timeout: "3600s"
   helm.pull.timeout: "3600s"
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cm
-  namespace: argocd
-data:
-  resource.customizations.ignoreDifferences: |
-    - group: ""
-      kind: ServiceAccount
-      jsonPointers:
-      - /automountServiceAccountToken

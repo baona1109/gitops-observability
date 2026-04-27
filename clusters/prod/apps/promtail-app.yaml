@@ -21,6 +21,11 @@ spec:
             extraRelabelConfigs:
               - target_label: cluster
                 replacement: prod
+  ignoreDifferences:
+    - group: ""
+      kind: ServiceAccount
+      jsonPointers:
+        - /automountServiceAccountToken
   syncPolicy:
     automated:
       prune: true
