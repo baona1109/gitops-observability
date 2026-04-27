@@ -42,11 +42,6 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
-  ignoreDifferences:
-    - group: ""
-      kind: ServiceAccount
-      jsonPointers:
-        - /automountServiceAccountToken
   syncPolicy:
     automated:
       prune: true

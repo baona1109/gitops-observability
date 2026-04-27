@@ -70,11 +70,6 @@ spec:
               cluster: obs
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 84.1.2
-  ignoreDifferences:
-    - group: ""
-      kind: ServiceAccount
-      jsonPointers:
-        - /automountServiceAccountToken
   syncPolicy:
     automated:
       prune: true
