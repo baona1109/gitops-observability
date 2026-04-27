@@ -47,6 +47,10 @@ spec:
       kind: ServiceAccount
       jsonPointers:
         - /automountServiceAccountToken
+    - group: monitoring.coreos.com
+      kind: Prometheus
+      jsonPointers:
+        - /spec/enableOTLPReceiver
   syncPolicy:
     automated:
       prune: true
