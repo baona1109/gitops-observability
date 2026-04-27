@@ -18,6 +18,9 @@ spec:
           type: memory
         allInOne:
           enabled: true
+          service:
+            type: NodePort
+            nodePort: 30686
         collector:
           enabled: false
         query:

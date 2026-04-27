@@ -11,15 +11,25 @@ spec:
   source:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 58.0.0
+    targetRevision: 84.1.2
     helm:
       values: |
+        crds:
+          upgradeJob:
+            enabled: true
         prometheus:
           prometheusSpec:
             remoteWrite:
               - url: https://prometheus.sudocrew.io.vn/api/v1/write
                 writeRelabelConfigs:
                   - targetLabel: cluster
+                    replacement: prod
+            additionalScrapeConfigs:
+              - job_name: node-exporter
+                static_configs:
+                  - targets: ['node-exporter.observability.svc:9100']
+                relabel_configs:
+                  - target_label: cluster
                     replacement: prod
         grafana:
           enabled: false

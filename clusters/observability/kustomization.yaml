@@ -7,3 +7,4 @@ resources:
   - apps/argocd-config.yaml
   - apps/argocd-nodeport.yaml
   - apps/loki-nodeport.yaml
+  - apps/grafana-dashboards/prod-overview.yaml

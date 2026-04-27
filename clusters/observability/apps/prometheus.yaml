@@ -32,6 +32,11 @@ spec:
           sidecar:
             datasources:
               enabled: true
+            dashboards:
+              enabled: true
+              label: grafana_dashboard
+              labelValue: "1"
+              searchNamespace: observability
             resources:
               requests:
                 cpu: 10m
@@ -49,6 +54,10 @@ spec:
           service:
             type: NodePort
             nodePort: 30300
+        alertmanager:
+          service:
+            type: NodePort
+            nodePort: 30903
         prometheus:
           service:
             type: NodePort
