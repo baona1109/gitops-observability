@@ -5,3 +5,5 @@ metadata:
   namespace: argocd
 data:
   server.insecure: "true"
+  reposerver.exec.timeout: "3600s"
+  helm.pull.timeout: "3600s"

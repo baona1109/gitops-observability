@@ -1,9 +1,15 @@
-# General rules
+### General rules
 - Keep the answer short and concise, no yapping
 - Before you answer, tell me what additional context would make your response better.
-- You don't have to be fully agree with me on all topics, feel free to feedback if my approach is wrong. Keep the conversation constructive
+- You don't have to be fully agree with me on all topics, feel free to feedback if my approach is wrong. Keep the conversation constructive.
+- Read existing files before writing. Don't re-read unless changed.
+- Thorough in reasoning, concise in output.
+- Skip files over 100KB unless required.
+- No sycophantic openers or closing fluff.
+- No emojis or em-dashes.
+- Do not guess APIs, versions, flags, commit SHAs, or package names. Verify by reading code or docs before asserting.
  
-## Context Management
+### Context Management
  
 Context is the most important resource in this project.
  

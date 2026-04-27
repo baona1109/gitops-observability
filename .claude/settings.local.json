@@ -13,7 +13,17 @@
       "Bash(python render_excalidraw.py \"C:\\\\Users\\\\bao\\\\Desktop\\\\gitops-observability\\\\architecture.excalidraw\")",
       "Bash(python -c \"from playwright.sync_api import sync_playwright; print\\('playwright ok'\\)\")",
       "Bash(python -c \"from playwright.sync_api import sync_playwright; p = sync_playwright\\(\\).start\\(\\); b = p.chromium.launch\\(\\); print\\('chromium ok'\\); b.close\\(\\); p.stop\\(\\)\")",
-      "Bash(rtk git *)"
+      "Bash(rtk git *)",
+      "Bash(rtk gain *)",
+      "Bash(rtk find *)",
+      "Bash(rtk grep *)",
+      "Bash(rtk ls *)",
+      "Bash(rtk read *)",
+      "Bash(xargs grep *)",
+      "Bash(rtk kubectl *)",
+      "Bash(kubectl config *)",
+      "WebSearch",
+      "WebFetch(domain:github.com)"
     ]
   },
   "enableAllProjectMcpServers": true,
