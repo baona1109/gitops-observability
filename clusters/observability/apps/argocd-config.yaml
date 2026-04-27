@@ -5,4 +5,4 @@ metadata:
   namespace: argocd
 data:
   server.insecure: "true"
-  reposerver.exec.timeout: "300s"
+  reposerver.exec.timeout: "3600s"
