@@ -16,9 +16,6 @@ spec:
     helm:
       skipCrds: false
       values: |
-        crds:
-          upgradeJob:
-            enabled: true
         grafana:
           adminPassword: admin
           additionalDataSources:

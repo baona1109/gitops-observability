@@ -14,9 +14,6 @@ spec:
     targetRevision: 84.1.2
     helm:
       values: |
-        crds:
-          upgradeJob:
-            enabled: true
         prometheus:
           prometheusSpec:
             remoteWrite:
@@ -41,6 +38,11 @@ spec:
           enabled: false
         nodeExporter:
           enabled: false   # ← already have your own node-exporter
+  ignoreDifferences:
+    - group: ""
+      kind: ServiceAccount
+      jsonPointers:
+        - /automountServiceAccountToken
   syncPolicy:
     automated:
       prune: true
