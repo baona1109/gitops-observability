@@ -21,13 +21,6 @@ spec:
                 writeRelabelConfigs:
                   - targetLabel: cluster
                     replacement: prod
-            additionalScrapeConfigs:
-              - job_name: node-exporter
-                static_configs:
-                  - targets: ['node-exporter.observability.svc:9100']
-                relabel_configs:
-                  - target_label: cluster
-                    replacement: prod
         grafana:
           enabled: false
         alertmanager:
@@ -37,7 +30,15 @@ spec:
         kubeStateMetrics:
           enabled: false
         nodeExporter:
-          enabled: false   # ← already have your own node-exporter
+          enabled: true
+        prometheus-node-exporter:
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
   ignoreDifferences:
     - group: ""
       kind: ServiceAccount

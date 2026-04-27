@@ -1,5 +1,4 @@
 resources:
-  - apps/exporters.yaml
   - apps/promtail-app.yaml
   - apps/argocd-config.yaml
   - apps/prometheus-agent.yaml
