@@ -16,6 +16,9 @@ spec:
     helm:
       skipCrds: false
       values: |
+        crds:
+          upgradeJob:
+            enabled: true
         grafana:
           adminPassword: admin
           additionalDataSources:
@@ -57,7 +60,7 @@ spec:
             externalLabels:
               cluster: obs
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 58.0.0
+    targetRevision: 84.1.2
   syncPolicy:
     automated:
       prune: true
