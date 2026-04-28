@@ -16,6 +16,18 @@ data:
       "templating": {
         "list": [
           {
+            "current": {},
+            "hide": 0,
+            "includeAll": false,
+            "label": "Datasource",
+            "multi": false,
+            "name": "DS_PROMETHEUS",
+            "options": [],
+            "query": "prometheus",
+            "refresh": 1,
+            "type": "datasource"
+          },
+          {
             "name": "cluster",
             "type": "query",
             "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
@@ -151,14 +163,6 @@ data:
           "fieldConfig": {
             "defaults": { "unit": "Bps" }
           }
-        }
-      ],
-      "__inputs": [
-        {
-          "name": "DS_PROMETHEUS",
-          "label": "Prometheus",
-          "type": "datasource",
-          "pluginId": "prometheus"
         }
       ],
       "schemaVersion": 38
