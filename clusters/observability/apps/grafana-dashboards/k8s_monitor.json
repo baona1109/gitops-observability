@@ -332,7 +332,7 @@
       "pluginVersion": "7.5.3",
       "targets": [
         {
-          "expr": "kube_node_info",
+          "expr": "kube_node_info{cluster=\"$cluster\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -341,7 +341,7 @@
           "refId": "A"
         },
         {
-          "expr": " (count by (node)(container_spec_memory_reservation_limit_bytes{pod!=\"\"}))",
+          "expr": " (count by (node)(container_spec_memory_reservation_limit_bytes{pod!=\"\",cluster=\"$cluster\"}))",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -350,7 +350,7 @@
           "refId": "B"
         },
         {
-          "expr": "max\n  by(node) (max by(instance) (kubelet_running_pod_count{job=\"kubelet\",metrics_path=\"/metrics\"})\n  * on(instance) group_left(node) kubelet_node_name{job=\"kubelet\",metrics_path=\"/metrics\"})\n",
+          "expr": "max\n  by(node) (max by(instance) (kubelet_running_pod_count{job=\"kubelet\",metrics_path=\"/metrics\",cluster=\"$cluster\"})\n  * on(instance) group_left(node) kubelet_node_name{job=\"kubelet\",metrics_path=\"/metrics\",cluster=\"$cluster\"})\n",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -358,7 +358,7 @@
           "refId": "D"
         },
         {
-          "expr": "sum by (node)(label_replace(instance:node_cpu:ratio + on(instance) group_left(nodename) \nnode_uname_info,\"node\",\"$1\",\"nodename\", \"(.+)\") ) / sum by (node)(kube_node_status_capacity{resource=\"cpu\"})",
+          "expr": "sum by (node)(label_replace(instance:node_cpu:ratio{cluster=\"$cluster\"} + on(instance) group_left(nodename) \nnode_uname_info{cluster=\"$cluster\"},\"node\",\"$1\",\"nodename\", \"(.+)\") ) / sum by (node)(kube_node_status_capacity{resource=\"cpu\",cluster=\"$cluster\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -366,21 +366,21 @@
           "refId": "E"
         },
         {
-          "expr": "kube_node_role",
+          "expr": "kube_node_role{cluster=\"$cluster\"}",
           "format": "table",
           "interval": "",
           "legendFormat": "",
           "refId": "F"
         },
         {
-          "expr": "label_replace(up{job=\"kubernetes-nodes\"}, \"node\", \"$1\", \"instance\", \"(.+)\")",
+          "expr": "label_replace(up{job=\"kubernetes-nodes\",cluster=\"$cluster\"}, \"node\", \"$1\", \"instance\", \"(.+)\")",
           "format": "table",
           "interval": "",
           "legendFormat": "",
           "refId": "G"
         },
         {
-          "expr": "label_replace(avg by (kubernetes_node) (time() - node_boot_time_seconds), \"node\", \"$1\", \"kubernetes_node\", \"(.+)\")",
+          "expr": "label_replace(avg by (kubernetes_node) (time() - node_boot_time_seconds{cluster=\"$cluster\"}), \"node\", \"$1\", \"kubernetes_node\", \"(.+)\")",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2276,7 +2276,7 @@
         "allValue": null,
         "current": {},
         "datasource": "${DS_PROMETHEUS}",
-        "definition": "label_values(kube_pod_labels, namespace)",
+        "definition": "label_values(kube_pod_labels{cluster=\"$cluster\"}, namespace)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -2286,7 +2286,7 @@
         "name": "namespace",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_labels, namespace)",
+          "query": "label_values(kube_pod_labels{cluster=\"$cluster\"}, namespace)",
           "refId": "Prometheus-namespace-Variable-Query"
         },
         "refresh": 1,
@@ -2303,7 +2303,7 @@
         "allValue": null,
         "current": {},
         "datasource": "${DS_PROMETHEUS}",
-        "definition": "label_values(kube_pod_info{namespace=\"$namespace\"},  pod)",
+        "definition": "label_values(kube_pod_info{namespace=\"$namespace\",cluster=\"$cluster\"},  pod)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -2313,7 +2313,7 @@
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info{namespace=\"$namespace\"},  pod)",
+          "query": "label_values(kube_pod_info{namespace=\"$namespace\",cluster=\"$cluster\"},  pod)",
           "refId": "Prometheus-pod-Variable-Query"
         },
         "refresh": 1,
