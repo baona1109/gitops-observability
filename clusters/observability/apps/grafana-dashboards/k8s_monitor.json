@@ -1887,13 +1887,13 @@
       "pluginVersion": "7.5.3",
       "targets": [
         {
-          "expr": "sum(kube_pod_container_resource_limits_cpu_cores{pod=\"$pod\", cluster=\"$cluster\"})",
+          "expr": "sum(kube_pod_container_resource_limits{pod=\"$pod\", cluster=\"$cluster\", resource=\"cpu\"})",
           "interval": "",
           "legendFormat": "CPU core",
           "refId": "A"
         },
         {
-          "expr": "sum(kube_pod_container_resource_limits_memory_bytes{pod=\"$pod\", cluster=\"$cluster\"})",
+          "expr": "sum(kube_pod_container_resource_limits{pod=\"$pod\", cluster=\"$cluster\", resource=\"memory\"})",
           "interval": "",
           "legendFormat": "Memory",
           "refId": "B"

@@ -60,12 +60,11 @@ spec:
               relabelings:
                 - targetLabel: cluster
                   replacement: obs
-        kube-state-metrics:
-          prometheus:
-            monitor:
-              relabelings:
-                - targetLabel: cluster
-                  replacement: obs
+        kubeStateMetrics:
+          serviceMonitor:
+            relabelings:
+              - targetLabel: cluster
+                replacement: obs
         alertmanager:
           service:
             type: NodePort
