@@ -54,6 +54,18 @@ spec:
           service:
             type: NodePort
             nodePort: 30300
+        prometheus-node-exporter:
+          prometheus:
+            monitor:
+              relabelings:
+                - targetLabel: cluster
+                  replacement: obs
+        kube-state-metrics:
+          prometheus:
+            monitor:
+              relabelings:
+                - targetLabel: cluster
+                  replacement: obs
         alertmanager:
           service:
             type: NodePort
