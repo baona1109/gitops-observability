@@ -31,7 +31,15 @@ spec:
         prometheusOperator:
           enabled: true    # ← keep operator to install CRDs
         kubeStateMetrics:
-          enabled: false
+          enabled: true
+        kube-state-metrics:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
         nodeExporter:
           enabled: true
         prometheus-node-exporter:
