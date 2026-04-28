@@ -90,7 +90,7 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": "avg(\navg_over_time((sum without ()(kube_pod_container_status_ready{namespace=\"kube-system\",pod=~\".*.dashboard.*|.*.dns.*|kube.*|.*.calico.*|.*.flannel.*|.*.etcd.*\"}) \n/ \ncount without ()(kube_pod_container_status_ready{namespace=\"kube-system\",pod=~\".*.dashboard.*|.*.dns.*|kube.*|.*.calico.*|.*.flannel.*|.*.etcd.*\"}))[$duration:5m])\n)",
+              "expr": "avg(\navg_over_time((sum without ()(kube_pod_container_status_ready{namespace=\"kube-system\",pod=~\".*.dashboard.*|.*.dns.*|kube.*|.*.calico.*|.*.flannel.*|.*.etcd.*\", cluster=\"$cluster\"}) \n/ \ncount without ()(kube_pod_container_status_ready{namespace=\"kube-system\",pod=~\".*.dashboard.*|.*.dns.*|kube.*|.*.calico.*|.*.flannel.*|.*.etcd.*\", cluster=\"$cluster\"}))[$duration:5m])\n)",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -526,7 +526,7 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": " count(kube_namespace_created)",
+              "expr": " count(kube_namespace_created{cluster=\"$cluster\"})",
               "hide": false,
               "instant": true,
               "interval": "",
@@ -604,7 +604,7 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": " count(count by (pod)(container_spec_memory_reservation_limit_bytes{pod!=\"\"}))",
+              "expr": " count(count by (pod)(container_spec_memory_reservation_limit_bytes{pod!=\"\", cluster=\"$cluster\"}))",
               "hide": false,
               "instant": true,
               "interval": "",
@@ -682,7 +682,7 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": "count(kube_persistentvolumeclaim_info) ",
+              "expr": "count(kube_persistentvolumeclaim_info{cluster=\"$cluster\"}) ",
               "hide": false,
               "instant": true,
               "interval": "",
@@ -765,7 +765,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "(sum by (instance,nodename) (irate(node_cpu_seconds_total{mode!~\"guest.*|idle|iowait\"}[$duration])) + on(instance) group_left(nodename) \nnode_uname_info) - 1",
+              "expr": "(sum by (instance,nodename) (irate(node_cpu_seconds_total{mode!~\"guest.*|idle|iowait\", cluster=\"$cluster\"}[$duration])) + on(instance) group_left(nodename) \nnode_uname_info) - 1",
               "instant": false,
               "interval": "",
               "legendFormat": "{{nodename}} ",
@@ -874,7 +874,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "((node_memory_MemTotal_bytes  + on(instance) group_left(nodename) \nnode_uname_info) - (node_memory_MemAvailable_bytes  + on(instance) group_left(nodename) \nnode_uname_info))",
+              "expr": "((node_memory_MemTotal_bytes{cluster=\"$cluster\"}  + on(instance) group_left(nodename) \nnode_uname_info{cluster=\"$cluster\"}) - (node_memory_MemAvailable_bytes{cluster=\"$cluster\"}  + on(instance) group_left(nodename) \nnode_uname_info{cluster=\"$cluster\"}))",
               "instant": false,
               "interval": "",
               "legendFormat": "{{nodename}}",
@@ -979,13 +979,13 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum (rate(node_network_receive_bytes_total[$duration]))",
+              "expr": "sum (rate(node_network_receive_bytes_total{cluster=\"$cluster\"}[$duration]))",
               "interval": "",
               "legendFormat": "{{kubernetes_node}}(in)",
               "refId": "A"
             },
             {
-              "expr": "sum (rate(node_network_transmit_bytes_total[$duration]))",
+              "expr": "sum (rate(node_network_transmit_bytes_total{cluster=\"$cluster\"}[$duration]))",
               "interval": "",
               "legendFormat": "{{kubernetes_node}}(out)",
               "refId": "B"
@@ -1081,7 +1081,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (verb) (rate(apiserver_request_total[$duration]))",
+              "expr": "sum by (verb) (rate(apiserver_request_total{cluster=\"$cluster\"}[$duration]))",
               "interval": "",
               "legendFormat": "{{verb}}",
               "refId": "A"
@@ -1192,7 +1192,7 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!~\"guest.*|idle|iowait\", kubernetes_node=\"$node\"}[5m]))",
+              "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!~\"guest.*|idle|iowait\", kubernetes_node=\"$node\", cluster=\"$cluster\"}[5m]))",
               "instant": true,
               "interval": "",
               "legendFormat": "",
@@ -1253,7 +1253,7 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": "sum(node_filesystem_size_bytes{kubernetes_node=\"$node\"} - node_filesystem_avail_bytes{kubernetes_node=\"$node\"}) by (kubernetes_node) / sum(node_filesystem_size_bytes{kubernetes_node=\"$node\"}) by (kubernetes_node)",
+              "expr": "sum(node_filesystem_size_bytes{kubernetes_node=\"$node\", cluster=\"$cluster\"} - node_filesystem_avail_bytes{kubernetes_node=\"$node\", cluster=\"$cluster\"}) by (kubernetes_node) / sum(node_filesystem_size_bytes{kubernetes_node=\"$node\", cluster=\"$cluster\"}) by (kubernetes_node)",
               "instant": true,
               "interval": "",
               "legendFormat": "",
@@ -1325,14 +1325,14 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_filefd_allocated{instance=~\"$instance\"}",
+              "expr": "node_filefd_allocated{instance=~\"$instance\", cluster=\"$cluster\"}",
               "interval": "",
               "intervalFactor": 5,
               "legendFormat": "used filefd",
               "refId": "A"
             },
             {
-              "expr": "rate(node_context_switches_total{instance=~\"$instance\"}[$duration])",
+              "expr": "rate(node_context_switches_total{instance=~\"$instance\", cluster=\"$cluster\"}[$duration])",
               "interval": "",
               "intervalFactor": 5,
               "legendFormat": "switches",
@@ -1438,19 +1438,19 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(node_disk_reads_completed_total{instance=~\"$instance\"}[$duration])",
+              "expr": "rate(node_disk_reads_completed_total{instance=~\"$instance\", cluster=\"$cluster\"}[$duration])",
               "interval": "",
               "legendFormat": "{{device}}_Reads",
               "refId": "A"
             },
             {
-              "expr": "rate(node_disk_writes_completed_total{instance=~\"$instance\"}[$duration])",
+              "expr": "rate(node_disk_writes_completed_total{instance=~\"$instance\", cluster=\"$cluster\"}[$duration])",
               "interval": "",
               "legendFormat": "{{device}}_Writes",
               "refId": "B"
             },
             {
-              "expr": "node_disk_io_now{instance=~\"$instance\"}",
+              "expr": "node_disk_io_now{instance=~\"$instance\", cluster=\"$cluster\"}",
               "interval": "",
               "legendFormat": "{{device}}",
               "refId": "C"
@@ -1557,7 +1557,7 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": "time()-kube_pod_start_time{pod=\"$pod\"}",
+              "expr": "time()-kube_pod_start_time{pod=\"$pod\", cluster=\"$cluster\"}",
               "instant": true,
               "interval": "",
               "legendFormat": "",
@@ -1634,7 +1634,7 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": "sum(kube_pod_container_status_waiting_reason{pod=\"$pod\", reason!~\"ContainerCreating\"})",
+              "expr": "sum(kube_pod_container_status_waiting_reason{pod=\"$pod\", reason!~\"ContainerCreating\", cluster=\"$cluster\"})",
               "instant": true,
               "interval": "",
               "legendFormat": "",
@@ -1696,7 +1696,7 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": "sum(round(increase(kube_pod_container_status_restarts_total{pod=\"$pod\"}[10m])))",
+              "expr": "sum(round(increase(kube_pod_container_status_restarts_total{pod=\"$pod\", cluster=\"$cluster\"}[10m])))",
               "format": "time_series",
               "instant": true,
               "interval": "",
@@ -1805,19 +1805,19 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": "sum(container_memory_usage_bytes{pod=\"$pod\"})",
+              "expr": "sum(container_memory_usage_bytes{pod=\"$pod\", cluster=\"$cluster\"})",
               "interval": "",
               "legendFormat": "Memory(bytes)",
               "refId": "B"
             },
             {
-              "expr": "sum(rate(container_cpu_usage_seconds_total{pod=\"$pod\"}[$duration]))",
+              "expr": "sum(rate(container_cpu_usage_seconds_total{pod=\"$pod\", cluster=\"$cluster\"}[$duration]))",
               "interval": "",
               "legendFormat": "CPU(%)",
               "refId": "A"
             },
             {
-              "expr": "sum(container_fs_usage_bytes{pod=\"$pod\"})",
+              "expr": "sum(container_fs_usage_bytes{pod=\"$pod\", cluster=\"$cluster\"})",
               "interval": "",
               "legendFormat": "File system usage",
               "refId": "C"
@@ -1896,13 +1896,13 @@ data:
           "pluginVersion": "7.5.3",
           "targets": [
             {
-              "expr": "sum(kube_pod_container_resource_limits_cpu_cores{pod=\"$pod\"})",
+              "expr": "sum(kube_pod_container_resource_limits_cpu_cores{pod=\"$pod\", cluster=\"$cluster\"})",
               "interval": "",
               "legendFormat": "CPU core",
               "refId": "A"
             },
             {
-              "expr": "sum(kube_pod_container_resource_limits_memory_bytes{pod=\"$pod\"})",
+              "expr": "sum(kube_pod_container_resource_limits_memory_bytes{pod=\"$pod\", cluster=\"$cluster\"})",
               "interval": "",
               "legendFormat": "Memory",
               "refId": "B"
@@ -1974,14 +1974,14 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(container_network_receive_bytes_total{pod=\"$pod\"}[$duration]))",
+              "expr": "sum(rate(container_network_receive_bytes_total{pod=\"$pod\", cluster=\"$cluster\"}[$duration]))",
               "interval": "",
               "intervalFactor": 1,
               "legendFormat": "in",
               "refId": "A"
             },
             {
-              "expr": "sum(rate(container_network_transmit_bytes_total{pod=\"$pod\"}[$duration]))",
+              "expr": "sum(rate(container_network_transmit_bytes_total{pod=\"$pod\", cluster=\"$cluster\"}[$duration]))",
               "interval": "",
               "legendFormat": "out",
               "refId": "B"
@@ -2087,7 +2087,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(container_threads{pod=\"$pod\", container!=\"POD\"})",
+              "expr": "sum(container_threads{pod=\"$pod\", container!=\"POD\", cluster=\"$cluster\"})",
               "interval": "",
               "intervalFactor": 5,
               "legendFormat": "Thread",
