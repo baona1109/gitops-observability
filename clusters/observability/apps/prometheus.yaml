@@ -64,8 +64,7 @@ spec:
             nodePort: 30090
           prometheusSpec:
             retention: 7d
-            enableFeatures:
-              - remote-write-receiver
+            enableRemoteWriteReceiver: true
             externalLabels:
               cluster: obs
     repoURL: https://prometheus-community.github.io/helm-charts
