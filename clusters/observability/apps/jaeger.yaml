@@ -1,8 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  annotations:
-    argocd.argoproj.io/tracking-id: observability-root:argoproj.io/Application:argocd/jaeger
   name: jaeger
   namespace: argocd
 spec:
@@ -21,20 +19,17 @@ spec:
           service:
             type: NodePort
             nodePort: 30686
-        collector:
-          enabled: false
-        query:
-          enabled: false
-        agent:
-          enabled: false
-        cassandra:
-          enabled: false
-        provisionDataStore:
-          cassandra: false
     repoURL: https://jaegertracing.github.io/helm-charts
     targetRevision: 0.71.0
+  ignoreDifferences:
+    - group: ""
+      kind: ServiceAccount
+      jsonPointers:
+        - /automountServiceAccountToken
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

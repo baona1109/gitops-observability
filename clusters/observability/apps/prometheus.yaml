@@ -1,9 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  annotations:
-    argocd.argoproj.io/tracking-id: observability-root:argoproj.io/Application:argocd/prometheus
-    argocd.argoproj.io/sync-wave: "0"
   name: prometheus
   namespace: argocd
 spec:
@@ -14,7 +11,6 @@ spec:
   source:
     chart: kube-prometheus-stack
     helm:
-      skipCrds: false
       values: |
         crds:
           upgradeJob:

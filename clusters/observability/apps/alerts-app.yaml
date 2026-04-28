@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: observability-root:argoproj.io/Application:argocd/alerts
     argocd.argoproj.io/sync-wave: "1"
   name: alerts
   namespace: argocd
@@ -19,4 +18,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
 

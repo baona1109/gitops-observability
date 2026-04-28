@@ -1,8 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  annotations:
-    argocd.argoproj.io/tracking-id: observability-root:argoproj.io/Application:argocd/loki
   name: loki
   namespace: argocd
 spec:
@@ -34,22 +32,20 @@ spec:
                   period: 24h
           storage:
             type: filesystem
-        chunksCache:
-          enabled: false
-        resultsCache:
-          enabled: false
         singleBinary:
           replicas: 1
           persistence:
             storageClass: local-path
             size: 10Gi
-        read:
-          replicas: 0
-        write:
-          replicas: 0
-        backend:
-          replicas: 0
+  ignoreDifferences:
+    - group: ""
+      kind: ServiceAccount
+      jsonPointers:
+        - /automountServiceAccountToken
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

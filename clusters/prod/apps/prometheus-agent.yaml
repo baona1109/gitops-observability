@@ -29,7 +29,7 @@ spec:
         alertmanager:
           enabled: false
         prometheusOperator:
-          enabled: true    # ← keep operator to install CRDs
+          enabled: true
         kubeStateMetrics:
           enabled: true
         kube-state-metrics:
@@ -65,4 +65,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true    # ← fixes the annotation size error
+      - ServerSideApply=true

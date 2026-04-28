@@ -1,5 +1,5 @@
 resources:
-  - apps/promtail-app.yaml
+  - apps/promtail.yaml
   - apps/argocd-config.yaml
   - apps/prometheus-agent.yaml
   - apps/argocd-nodeport.yaml
