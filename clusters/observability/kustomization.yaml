@@ -8,13 +8,4 @@ resources:
   - apps/argocd-nodeport.yaml
   - apps/loki-nodeport.yaml
   - apps/grafana-dashboards/prod-overview.yaml
-
-configMapGenerator:
-  - name: grafana-dashboard-k8s-monitor
-    namespace: observability
-    options:
-      labels:
-        grafana_dashboard: "1"
-      disableNameSuffixHash: true
-    files:
-      - apps/grafana-dashboards/k8s_monitor.json
+  - apps/grafana-dashboards/k8s-monitor.yaml

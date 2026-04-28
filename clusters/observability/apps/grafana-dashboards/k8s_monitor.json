@@ -1004,7 +1004,7 @@
         {
           "decimals": null,
           "format": "decbytes",
-          "label": "́ˆ˜́‹  | ́†¡́‹ ",
+          "label": " | ",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1824,7 +1824,7 @@
       "fieldConfig": {
         "defaults": {
           "mappings": [],
-          "noValue": "âˆ",
+          "noValue": "",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2001,7 +2001,7 @@
         {
           "decimals": null,
           "format": "decbytes",
-          "label": "́ˆ˜́‹  | ́†¡́‹ ",
+          "label": " | ",
           "logBase": 1,
           "max": null,
           "min": null,
